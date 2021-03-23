@@ -10,6 +10,8 @@ on:
       access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
     params:
       screen_name: Skayo_
+    config:
+      debug: true
 
 jobs:
   telegram:
