@@ -27,4 +27,4 @@ jobs:
           token: ${{ secrets.TWITTER_TELEGRAM_TOKEN }}
           format: html
           message: |
-            <a href="https://twitter.com/${{ env.SCREEN_NAME }}/status/${{ on.twitter.outputs.id }}">New Tweet by @${{ env.SCREEN_NAME }}</a>
+            <a href="https://twitter.com/${{ env.SCREEN_NAME }}/status/${{ on.twitter.outputs.id_str }}">New Tweet by @${{ env.SCREEN_NAME }}</a>
