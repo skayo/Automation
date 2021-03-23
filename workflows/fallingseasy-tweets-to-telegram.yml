@@ -22,8 +22,8 @@ jobs:
       - name: "Send Telegram Message"
         uses: appleboy/telegram-action@v0.1.0
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TWITTER_TELEGRAM_CHATID }}
+          token: ${{ secrets.TWITTER_TELEGRAM_TOKEN }}
           format: html
           message: |
             <a href="https://twitter.com/${{ env.SCREEN_NAME }}/status/${{ on.twitter.outputs.id }}">New Tweet by @${{ env.SCREEN_NAME }}</a>

@@ -1,0 +1,31 @@
+name: "Send Pushbullet Notifications from Bytesized to Telegram"
+
+on:
+  poll:
+    url: "https://api.pushbullet.com/v2/pushes?active=true"
+    itemsPath: pushes
+    deduplicationKey: iden
+    requestConfig:
+      headers:
+        Access-Token: ${{ secrets.PUSHBULLET_ACCESS_TOKEN }}
+    config:
+      format: |
+        switch (item.type) {
+          case 'note': item.message = `<b>${item.title}</b>\n${item.body}`; break;
+          case 'link': item.message = `<a href="${item.url}">${item.title}</a>\n${item.body}`; break;
+          case 'file': item.message = `<a href="${item.file_url}">${item.file_name}</a>\n${item.body}`; break;
+        }
+        return item;
+
+jobs:
+  telegram:
+    name: "Send Pushbullet Notification to Telegram"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Send Telegram Message"
+        uses: appleboy/telegram-action@v0.1.0
+        with:
+          to: ${{ secrets.ORDON_TELEGRAM_CHATID }}
+          token: ${{ secrets.ORDON_TELEGRAM_TOKEN }}
+          format: html
+          message: ${{ on.poll.outputs.message }}
