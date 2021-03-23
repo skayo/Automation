@@ -25,4 +25,5 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
-          message: "[New Tweet by @Skayo_](https://twitter.com/Skayo_/${{ on.twitter.outputs.id }})"
+          message: |
+            [New Tweet by @Skayo_](https://twitter.com/Skayo_/${{ on.twitter.outputs.id }})
