@@ -24,6 +24,6 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
+          format: html
           message: |
-            [New Tweet by @Skayo_](https://twitter.com/Skayo_/${{ on.twitter.outputs.id }})
+            <a href="https://twitter.com/${{ env.SCREEN_NAME }}/status/${{ on.twitter.outputs.id }}">New Tweet by @${{ env.SCREEN_NAME }}</a>
