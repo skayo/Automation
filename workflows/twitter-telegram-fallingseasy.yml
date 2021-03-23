@@ -1,7 +1,7 @@
-name: "Send new Tweets from @Skayo_ to Telegram Channel"
+name: "Send new Tweets from @fallingseasy to Telegram Channel"
 
 env:
-  SCREEN_NAME: Skayo_
+  SCREEN_NAME: fallingseasy
 
 on:
   twitter:

@@ -1,0 +1,29 @@
+name: "Send new Tweets from @fischtisch to Telegram Channel"
+
+env:
+  SCREEN_NAME: fischtisch
+
+on:
+  twitter:
+    api: statuses/user_timeline
+    auth:
+      consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }}
+      consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+      access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
+    params:
+      screen_name: ${{ env.SCREEN_NAME }}
+
+jobs:
+  telegram:
+    name: "Send Tweet to Telegram Channel"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Send Telegram Message"
+        uses: appleboy/telegram-action@v0.1.0
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message: |
+            <a href="https://twitter.com/${{ env.SCREEN_NAME }}/status/${{ on.twitter.outputs.id }}">New Tweet by @${{ env.SCREEN_NAME }}</a>
