@@ -13,6 +13,7 @@ on:
       access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
     params:
       screen_name: ${{ env.SCREEN_NAME }}
+      include_rts: false
 
 jobs:
   telegram:

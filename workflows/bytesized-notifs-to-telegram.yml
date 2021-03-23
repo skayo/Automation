@@ -9,11 +9,13 @@ on:
       headers:
         Access-Token: ${{ secrets.PUSHBULLET_ACCESS_TOKEN }}
     config:
+      filter:
+        sender_name: "Bytesized"
       format: |
         switch (item.type) {
-          case 'note': item.message = `<b>${item.title}</b>\n${item.body}`; break;
-          case 'link': item.message = `<a href="${item.url}">${item.title}</a>\n${item.body}`; break;
-          case 'file': item.message = `<a href="${item.file_url}">${item.file_name}</a>\n${item.body}`; break;
+          case 'note': item.message = `<b>${item.title}</b>\n\n${item.body}`; break;
+          case 'link': item.message = `<b>${item.title}</b>\n\n${item.body}\n\n${item.url}`; break;
+          case 'file': item.message = `<a href="${item.file_url}">${item.file_name}</a>\n\n${item.body}`; break;
         }
         return item;
 
