@@ -1,4 +1,7 @@
-name: "Send new Tweets from @Skayo_ to Telegram Channel"
+name: "Send new Tweets from @${{ env.SCREEN_NAME }} to Telegram Channel"
+
+env:
+  SCREEN_NAME: Skayo_
 
 on:
   twitter:
@@ -9,7 +12,7 @@ on:
       access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
     params:
-      screen_name: Skayo_
+      screen_name: ${{ env.SCREEN_NAME }}
     config:
       debug: true
 
@@ -24,4 +27,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
-          message: "[New Tweet by @${{ on.twitter.outputs.user.screen_name }}](https://twitter.com/${{ on.twitter.outputs.user.screen_name }}/${{ on.twitter.outputs.id }})"
+          message: "[New Tweet by @${{ env.SCREEN_NAME }}](https://twitter.com/${{ env.SCREEN_NAME }}/${{ on.twitter.outputs.id }})"
