@@ -1,4 +1,4 @@
-name: "Send Pushbullet Notifications from Bytesized to Telegram"
+name: "Send Pushbullet notifications from Bytesized to Telegram"
 
 on:
   poll:
