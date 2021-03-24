@@ -1,4 +1,4 @@
-name: "Send new Tweets from me and my friends to a Telegram channel"
+name: "Share new Tweets from me and my friends on a Telegram channel"
 
 on:
   twitter:
@@ -7,7 +7,7 @@ on:
       consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }}
       consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
       access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-      access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
+      access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
     params:
       q: "(from:Skayo_ OR from:fischtisch OR from:fallingseasy OR from:1kescher OR from:maja_fuckn_cat OR from:1okaymate) -filter:replies"
       result_type: recent
