@@ -9,7 +9,7 @@ on:
       access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       access_token_secret: ${{ secrets.TWITTER_ACCESS_SECRET }}
     params:
-      q: "(from:Skayo__ OR from:fischtisch OR from:fallingseasy OR from:1kescher OR from:maja_fuckn_cat OR from:1okaymate) -filter:replies"
+      q: "(from:Skayo_ OR from:fischtisch OR from:fallingseasy OR from:1kescher OR from:maja_fuckn_cat OR from:1okaymate) -filter:replies"
       result_type: recent
       include_entities: false
     config:
