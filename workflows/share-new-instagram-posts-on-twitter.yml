@@ -1,0 +1,25 @@
+name: "Share new Instagram posts on Twitter"
+
+on:
+  instagram:
+    access_token: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+    fetchAllResultsAtFirst: false
+    config:
+      format: |
+        const url = new URL(item.permalink);
+        item.pregramerlink = 'https://pregramer.link/' + url.pathname.slice(3, url.pathname.length - 1);
+        return item;
+
+jobs:
+  tweet:
+    name: "Tweet new Instagram posts"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Tweet Pregramer Link"
+        uses: ethomson/send-tweet-action@v1
+        with:
+          status: ${{ on.instagram.outputs.pregramerlink }}
+          consumer-key: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          consumer-secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
