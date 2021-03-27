@@ -12,6 +12,7 @@ on:
       q: "(from:Skayo_ OR from:fischtisch OR from:fallingseasy OR from:1kescher OR from:maja_fuckn_cat OR from:1okaymate) -filter:replies -filter:retweets"
       result_type: recent
       include_entities: false
+    fetchAllResultsAtFirst: false
     config:
       sortScript: |
         return new Date(a.created_at) - new Date(b.created_at)
