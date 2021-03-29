@@ -9,7 +9,7 @@ on:
       access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
     params:
-      q: "(from:Skayo_ OR from:fischtisch OR from:fallingseasy OR from:1kescher OR from:maja_fuckn_cat OR from:1okaymate) -filter:replies -filter:retweets"
+      q: "list:${{ TWITTER_LIST_ID }} -filter:replies -filter:retweets"
       result_type: recent
       include_entities: false
     fetchAllResultsAtFirst: false
@@ -25,7 +25,7 @@ jobs:
       - name: "Send Telegram Message"
         uses: appleboy/telegram-action@v0.1.0
         with:
-          to: ${{ secrets.TWITTER_TELEGRAM_CHATID }}
+          to: ${{ secrets.TWITTER_TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TWITTER_TELEGRAM_TOKEN }}
           format: html
           message: |

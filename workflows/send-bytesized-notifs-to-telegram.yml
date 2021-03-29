@@ -27,7 +27,7 @@ jobs:
       - name: "Send Telegram Message"
         uses: appleboy/telegram-action@v0.1.0
         with:
-          to: ${{ secrets.ORDON_TELEGRAM_CHATID }}
+          to: ${{ secrets.ORDON_TELEGRAM_CHAT_ID }}
           token: ${{ secrets.ORDON_TELEGRAM_TOKEN }}
           format: html
           message: ${{ on.poll.outputs.message }}
