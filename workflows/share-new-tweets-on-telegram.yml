@@ -9,7 +9,7 @@ on:
       access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
     params:
-      q: "list:${{ TWITTER_LIST_ID }} -filter:replies -filter:retweets"
+      q: "list:${{ secrets.TWITTER_LIST_ID }} -filter:replies -filter:retweets"
       result_type: recent
       include_entities: false
     fetchAllResultsAtFirst: false
