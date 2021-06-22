@@ -12,7 +12,6 @@ on:
       q: "list:${{ secrets.TWITTER_LIST_ID }} -filter:replies -filter:retweets"
       result_type: recent
       include_entities: false
-    fetchAllResultsAtFirst: false
     config:
       sortScript: |
         return new Date(a.created_at) - new Date(b.created_at)
