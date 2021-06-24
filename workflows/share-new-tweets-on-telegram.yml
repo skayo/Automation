@@ -13,6 +13,7 @@ on:
       result_type: recent
       include_entities: false
     config:
+      active: false
       sortScript: |
         return new Date(a.created_at) - new Date(b.created_at)
 
